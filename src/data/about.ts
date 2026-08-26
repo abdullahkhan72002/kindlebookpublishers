@@ -26,7 +26,7 @@ export const aboutStoryContent = {
     "From manuscript development and editing to cover design, publishing, and distribution, we provide personalized support tailored to your publishing goals. Whether you're a first-time writer or an experienced author, we focus on preserving your voice while delivering quality that connects with readers worldwide.",
     "Let Kindle Book Publishers help turn your vision into a published success story that leaves a lasting impression.",
   ],
-  imageSrc: "/about-2.webp",
+  imageSrc: "/about-us-hero-new.webp",
   imageAlt: "Stack of published books",
   tone: "onLight" as const,
   imagePosition: "left" as const,
