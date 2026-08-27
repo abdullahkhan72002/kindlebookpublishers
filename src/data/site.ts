@@ -1,6 +1,6 @@
 export const site = {
   name: "Kindle Book Publishers",
-  email: "kindlebookpublishers@gmail.com",
+  email: "info@kindlebookpublishers.us",
   phone: "+1 424 282 3304",
   phoneHref: "tel:+14242823304",
 };
@@ -37,6 +37,7 @@ export const headerContent = {
 };
 
 export const footerContent = {
+  email: site.email,
   description:
     "Don't hide your story when the world is waiting to hear it. Kindle Book Publishers guides you through every step so you can show your creativity with confidence.",
   columns: [

@@ -249,7 +249,7 @@ export const privacyPolicyContent = {
     },
     {
       type: "paragraph",
-      text: "Email: kindlebookpublishers@gmail.com",
+      text: "Email: info@kindlebookpublishers.us",
     },
   ] satisfies LegalBlock[],
 };
@@ -478,7 +478,7 @@ export const termsAndConditionsContent = {
     },
     {
       type: "paragraph",
-      text: "Email: kindlebookpublishers@gmail.com",
+      text: "Email: info@kindlebookpublishers.us",
     },
     {
       type: "paragraph",
@@ -589,7 +589,7 @@ export const termsAndConditionsContent = {
     },
     {
       type: "paragraph",
-      text: "Email: kindlebookpublishers@gmail.com",
+      text: "Email: info@kindlebookpublishers.us",
     },
   ] satisfies LegalBlock[],
 };
@@ -714,7 +714,7 @@ export const returnAndRefundContent = {
     },
     {
       type: "paragraph",
-      text: "Email: kindlebookpublishers@gmail.com",
+      text: "Email: info@kindlebookpublishers.us",
     },
   ] satisfies LegalBlock[],
 };

@@ -10,6 +10,7 @@ export type FooterColumn = {
 };
 
 export type FooterProps = {
+  email: string;
   description: string;
   columns: FooterColumn[];
   socialTitle: string;
@@ -19,6 +20,7 @@ export type FooterProps = {
 };
 
 export default function Footer({
+  email,
   description,
   columns,
   socialTitle,
@@ -38,6 +40,12 @@ export default function Footer({
           <p className="text-body max-w-xs text-left text-foreground/70">
             {description}
           </p>
+          <a
+            href={`mailto:${email}`}
+            className="text-nav text-foreground/75 transition-colors hover:text-primary"
+          >
+            {email}
+          </a>
         </div>
 
         {columns.map((column) => (
