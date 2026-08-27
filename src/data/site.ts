@@ -1,6 +1,6 @@
 export const site = {
   name: "Kindle Book Publishers",
-  email: "info@kindlebookpublishers.us",
+  email: "kindlebookpublishers@gmail.com",
   phone: "+1 424 282 3304",
   phoneHref: "tel:+14242823304",
 };

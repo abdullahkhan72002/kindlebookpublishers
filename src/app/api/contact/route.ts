@@ -141,8 +141,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Please fill out the form." }, { status: 400 });
     }
 
-    const smtpUser = getEnv("SMTP_USER");
-    const smtpPass = getEnv("SMTP_PASS");
+    const smtpUser = getEnv("SMTP_USER").trim();
+    const smtpPass = getEnv("SMTP_PASS").replace(/\s+/g, "");
     const smtpHost = process.env.SMTP_HOST ?? "smtp.gmail.com";
     const smtpPort = Number(process.env.SMTP_PORT ?? "587");
     const leadEmailTo = process.env.LEAD_EMAIL_TO ?? smtpUser;
