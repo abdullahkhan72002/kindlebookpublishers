@@ -162,6 +162,21 @@ h6 {
   color: #ffffff;
 }
 
+.btn-sweep-outline {
+  background-color: transparent;
+  border: 1px solid rgb(0 0 0 / 0.16);
+  color: #000000;
+}
+
+.btn-sweep-outline::before {
+  background-color: var(--primary);
+}
+
+.btn-sweep-outline:hover {
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
 .btn-sweep-outline-dark {
   background-color: transparent;
   border: 1px solid rgb(255 255 255 / 0.35);

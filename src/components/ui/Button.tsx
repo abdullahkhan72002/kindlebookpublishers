@@ -5,6 +5,7 @@ export type SweepVariant =
   | "secondary-dark"
   | "secondary-light"
   | "primary-light"
+  | "outline"
   | "outline-dark"
   | "white";
 
@@ -12,6 +13,7 @@ const variantClasses: Record<SweepVariant, string> = {
   "secondary-dark": "btn-sweep btn-sweep-secondary-dark",
   "secondary-light": "btn-sweep btn-sweep-secondary-light",
   "primary-light": "btn-sweep btn-sweep-primary-light",
+  outline: "btn-sweep btn-sweep-outline",
   "outline-dark": "btn-sweep btn-sweep-outline-dark",
   white: "btn-sweep btn-sweep-white",
 };
@@ -26,7 +28,7 @@ type ButtonBaseProps = {
 type ButtonAsLink = ButtonBaseProps & {
   href: string;
   type?: never;
-  onClick?: never;
+  onClick?: () => void;
 };
 
 type ButtonAsButton = ButtonBaseProps & {
@@ -56,7 +58,7 @@ export default function Button({
 
     if (isNativeLink) {
       return (
-        <a href={rest.href} className={classes}>
+        <a href={rest.href} onClick={rest.onClick} className={classes}>
           {icon}
           {children}
         </a>
@@ -64,7 +66,7 @@ export default function Button({
     }
 
     return (
-      <Link href={rest.href} className={classes}>
+      <Link href={rest.href} onClick={rest.onClick} className={classes}>
         {icon}
         {children}
       </Link>

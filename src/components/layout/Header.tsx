@@ -16,13 +16,25 @@ export type NavItem = NavLink & {
   children?: NavLink[];
 };
 
+export type HeaderCta = NavLink & { shortLabel?: string };
+
 export type HeaderProps = {
   email: string;
   phone: string;
   phoneHref: string;
   nav: NavItem[];
-  consultationCta: NavLink;
+  consultationCta: HeaderCta;
+  manuscriptCta: HeaderCta;
 };
+
+function CtaLabel({ cta }: { cta: HeaderCta }) {
+  return (
+    <>
+      <span className="2xl:hidden">{cta.shortLabel ?? cta.label}</span>
+      <span className="hidden 2xl:inline">{cta.label}</span>
+    </>
+  );
+}
 
 export default function Header({
   email,
@@ -30,6 +42,7 @@ export default function Header({
   phoneHref,
   nav,
   consultationCta,
+  manuscriptCta,
 }: HeaderProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -71,6 +84,9 @@ export default function Header({
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen, closeMenu]);
+
+  const ctaButtonClasses =
+    "whitespace-nowrap px-3 py-2 text-xs xl:px-5 xl:py-3 xl:text-btn";
 
   return (
     <header
@@ -171,36 +187,46 @@ export default function Header({
 
           <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
             <Button
-              href={phoneHref}
-              variant="secondary-dark"
-              icon={<Phone className="size-4" aria-hidden />}
-              className="whitespace-nowrap px-3 py-2 text-xs xl:px-5 xl:py-3 xl:text-btn"
+              href={consultationCta.href}
+              variant="outline"
+              className={ctaButtonClasses}
             >
-              {phone}
+              <CtaLabel cta={consultationCta} />
             </Button>
             <Button
-              href={consultationCta.href}
+              href={manuscriptCta.href}
               variant="secondary-dark"
-              className="whitespace-nowrap px-3 py-2 text-xs xl:px-5 xl:py-3 xl:text-btn"
+              className={ctaButtonClasses}
             >
-              <span className="2xl:hidden">Free Consultation</span>
-              <span className="hidden 2xl:inline">{consultationCta.label}</span>
+              <CtaLabel cta={manuscriptCta} />
             </Button>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-expanded={menuOpen}
-            aria-label="Toggle navigation menu"
-            className="flex size-11 items-center justify-center rounded-full border border-foreground/15 text-foreground transition-colors hover:border-primary hover:text-primary lg:hidden"
-          >
-            {menuOpen ? (
-              <X className="size-5" aria-hidden />
-            ) : (
-              <Menu className="size-5" aria-hidden />
-            )}
-          </button>
+          <div className="flex shrink-0 items-center gap-2 lg:hidden">
+            <span className="hidden min-[400px]:inline-flex">
+              <Button
+                href={manuscriptCta.href}
+                variant="secondary-dark"
+                className="whitespace-nowrap px-3 py-2 text-xs"
+                onClick={closeMenu}
+              >
+                Submit
+              </Button>
+            </span>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-expanded={menuOpen}
+              aria-label="Toggle navigation menu"
+              className="flex size-11 items-center justify-center rounded-full border border-foreground/15 text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              {menuOpen ? (
+                <X className="size-5" aria-hidden />
+              ) : (
+                <Menu className="size-5" aria-hidden />
+              )}
+            </button>
+          </div>
         </Container>
       </div>
 
@@ -299,14 +325,20 @@ export default function Header({
 
           <div className="flex flex-col gap-3 border-t border-foreground/10 px-5 py-5">
             <Button
-              href={phoneHref}
+              href={manuscriptCta.href}
               variant="secondary-dark"
-              icon={<Phone className="size-4" aria-hidden />}
+              className="w-full"
+              onClick={closeMenu}
             >
-              {phone}
+              {manuscriptCta.label}
             </Button>
-            <Button href={consultationCta.href} variant="secondary-dark">
-              {consultationCta.label}
+            <Button
+              href={consultationCta.href}
+              variant="outline"
+              className="w-full"
+              onClick={closeMenu}
+            >
+              {consultationCta.shortLabel ?? consultationCta.label}
             </Button>
           </div>
         </nav>

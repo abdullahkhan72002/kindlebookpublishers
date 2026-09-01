@@ -8,6 +8,7 @@ import { site } from "@/data/site";
 import { submitLeadForm } from "@/lib/submitLeadForm";
 
 const POPUP_DELAY_MS = 2000;
+const HIDDEN_PATHS = ["/submit-your-manuscript"];
 
 export default function LeadPopup() {
   const pathname = usePathname();
@@ -30,6 +31,7 @@ export default function LeadPopup() {
   }
 
   useEffect(() => {
+    if (HIDDEN_PATHS.includes(pathname)) return;
     const timer = window.setTimeout(() => setOpen(true), POPUP_DELAY_MS);
     return () => window.clearTimeout(timer);
   }, [pathname]);
@@ -79,7 +81,7 @@ export default function LeadPopup() {
     window.setTimeout(close, 1800);
   };
 
-  if (!open) return null;
+  if (HIDDEN_PATHS.includes(pathname) || !open) return null;
 
   const inputClasses =
     "text-nav w-full rounded-lg border border-foreground/20 bg-white px-4 py-3 text-foreground outline-none transition-colors placeholder:text-foreground/40 focus:border-primary";

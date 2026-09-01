@@ -33,7 +33,16 @@ export const headerContent = {
     { label: "Portfolio", href: "/portfolio" },
     { label: "Contact Us", href: "/contact-us" },
   ],
-  consultationCta: { label: "Start Free Consultation", href: "/contact-us" },
+  consultationCta: {
+    label: "Start Free Consultation",
+    shortLabel: "Free Consultation",
+    href: "/contact-us",
+  },
+  manuscriptCta: {
+    label: "Submit Your Manuscript",
+    shortLabel: "Submit Manuscript",
+    href: "/submit-your-manuscript",
+  },
 };
 
 export const footerContent = {
